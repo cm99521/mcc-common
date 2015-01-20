@@ -1,0 +1,57 @@
+login linux server : hostname
+
+
+
+
+#Download cvs2svn:
+curl -o ./cvs2svn-2.4.0.tar.gz http://cvs2svn.tigris.org/files/documents/1462/49237/cvs2svn-2.4.0.tar.gz
+
+
+tar zxvf cvs2svn-2.4.0.tar.gz
+
+
+#Set PATH
+linux:   
+export PATH=$PATH:/svn/X/1.4.5l/bin:/home/cvs2svn-2.4.0:/python/X/2.7.2/BINGRP_5.8p4/bin
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/svn/X/1.4.5l/lib
+
+
+
+
+
+
+
+
+cvs2svn --fallback-encoding=UTF-8 -s /home/SVNRoot/mcc /opt//CVSRepository/mcc
+
+
+
+
+
+
+
+
+#test that repo is ok
+svn ls file:///home/SVNRoot/mcc
+
+
+
+
+
+
+#start up svn repo server
+svnserve -d --listen-port 10011 -r /home/SVNRoot/mcc
+
+
+#in eclipse, using SVN plugin, the URL of repo
+linux: 
+svn://hostname/home/SVNRoot/mcc
+
+
+
+
+#kill the svn server
+ps -auxwww | grep userid
+
+
+

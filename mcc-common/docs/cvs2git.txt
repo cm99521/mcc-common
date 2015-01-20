@@ -1,0 +1,90 @@
+#official website
+http://git-scm.com/
+#Download cvs2svn:
+export http_proxy=proxyhost:8080
+export https_proxy=proxyhost:8080
+curl -o ./cvs2svn-2.4.0.tar.gz http://cvs2svn.tigris.org/files/documents/1462/49237/cvs2svn-2.4.0.tar.gz
+
+
+tar zxvf cvs2svn-2.4.0.tar.gz
+
+
+#Set PATH
+linux:   
+export PATH=$PATH:/svn/X/1.4.5l/bin:/home/user/cvs2svn-2.4.0:/python/X/2.7.2/BINGRP_5.8p4/bin:/cvs/X/1.11.22l_64/bin
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/svn/X/1.4.5l/lib
+
+
+
+
+#cvs to git tmp files
+cvs2git --options=cvs2git-example.options
+
+
+
+
+#copy git tmp files to your server host and import git tmp files into git repo(see http://gitolite.com/archived/cvs2git.html)
+scp src username@hostname:destpath
+scp *.dat user@hostname:/tmp/cvs2svn-tmp
+
+
+
+
+
+
+#import dat tmp file into dest folder
+mkdir mcc (the folder name must be same with CVS repostory folder name, here it must be mcc)
+cd mcc
+git init
+cat ../git-{blob,dump}.dat | git fast-import
+
+
+
+
+
+
+#git config repository location info
+# origin is a local name used to uniquely identify a remote repo
+git remote add origin user@hostname:/tmp/mcc
+user@hostname:/tmp/cvs2svn-tmp/mcc
+
+
+
+
+
+
+
+
+#download existing git repo to local
+git clone user@hostname:/tmp/gitrepo
+
+
+#checkout specified brach from repository server: test is the loca name you want, origin is the repository name, test (the one together with origin/) is the real branch name
+git checkout -b test origin/test
+
+
+#clone only specific branch
+With Git 1.7.10 and later, add --single-branch to prevent fetching of all branches. Example, with OpenCV 2.4 branch:
+git clone -b b1 --single-branch mcc b1
+
+
+#useful links to learn git command
+http://tecadmin.net/install-git-2-0-on-centos-rhel-fedora/
+http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000
+http://sixrevisions.com/web-development/easy-git-tutorial/
+https://try.github.io/levels/1/challenges/1
+http://rogerdudler.github.io/git-guide/index.zh.html
+
+
+
+
+#wget is a linux command to download sth from web
+wget https://www.kernel.org/pub/software/scm/git/git-2.2.0.tar.gz
+
+
+
+
+#eclipse plugin for git gui
+http://wiki.eclipse.org/EGit/FAQ#What_versions_of_Eclipse_does_EGit_target.3F
+
+
