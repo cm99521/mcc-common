@@ -1,0 +1,14 @@
+#cannot find eth0
+in linux:
+ifconfig only lo, no eth0
+
+cat/etc/sysconfig/network-scripts/ifcfg-eth0, change from ONBOOT=no to ONBOOT=yes
+restart server
+
+#install epel
+cd /opt/download
+
+curl -o ./yum-3.4.3-118.el7.centos.noarch.rpm http://ftp.nara.wide.ad.jp/pub/Linux/centos/7/os/x86_64/Packages/yum-3.4.3-118.el7.centos.noarch.rpm
+curl -o ./python-iniparse-0.4-9.el7.noarch.rpm http://ftp.nara.wide.ad.jp/pub/Linux/centos/7/os/x86_64/Packages/python-iniparse-0.4-9.el7.noarch.rpm
+curl -o ./yum-metadata-parser-1.1.4-10.el7.x86_64.rpm http://ftp.nara.wide.ad.jp/pub/Linux/centos/7/os/x86_64/Packages/yum-metadata-parser-1.1.4-10.el7.x86_64.rpm  
+curl -o ./yum-plugin-fastestmirror-1.1.31-24.el7.noarch.rpm http://ftp.nara.wide.ad.jp/pub/Linux/centos/7/os/x86_64/Packages/yum-plugin-fastestmirror-1.1.31-24.el7.noarch.rpm     
